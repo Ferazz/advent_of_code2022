@@ -3,7 +3,7 @@ from typing import List
 def part1():
     # Part 1
     item_data = open("day3/input.txt")
-    sum = 0
+    sum_priority = 0
     for backpack in item_data:
         common_item = get_common_item(backpack.strip())
         sum += get_priority(common_item)
@@ -12,7 +12,7 @@ def part1():
 def part2():
     # Part 2
     item_data = list(open("day3/input.txt"))
-    sum = 0
+    sum_priority = 0
     
     elf_n = 1
     current_group: List[str] = []
@@ -21,12 +21,12 @@ def part2():
         if elf_n == 3:
 
             badge = get_badge(current_group)
-            sum += get_priority(badge)
+            sum_priority += get_priority(badge)
             current_group.clear()
             elf_n = 0
         elf_n += 1
 
-    print(f"Total sum is: {sum}")
+    print(f"Total sum is: {sum_priority}")
 
 def get_common_item(backpack_items):
     # Part 1
@@ -35,7 +35,7 @@ def get_common_item(backpack_items):
 
     for item in comp_a:
         if item in comp_b:
-            return item          
+            return item
 
 def get_badge(elves_backpacks: List[List[str]]):
     # Part 2
